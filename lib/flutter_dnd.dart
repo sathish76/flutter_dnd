@@ -3,45 +3,45 @@ import 'dart:async';
 import 'package:flutter/services.dart';
 
 class FlutterDnd {
-  // Unknown filter
+  /// Unknown filter
   static const int INTERRUPTION_FILTER_UNKNOWN = 0;
 
-  // No notifications are suppressed.
+  /// No notifications are suppressed.
   static const int INTERRUPTION_FILTER_ALL = 1;
 
-  // Allow priority notifications.
+  /// Allow priority notifications.
   static const int INTERRUPTION_FILTER_PRIORITY = 2;
 
-  // Suppress all notifications. (Turn off DND)
+  /// Suppress all notifications. (Turn off DND)
   static const int INTERRUPTION_FILTER_NONE = 3;
 
-  // Allow alarm notifications.
+  /// Allow alarm notifications.
   static const int INTERRUPTION_FILTER_ALARMS = 4;
 
   static const MethodChannel _channel = const MethodChannel('flutter_dnd');
 
-  // Check the application has access to change the DND settings
+  /// Check the application has access to change the DND settings
   static Future<bool> get isNotificationPolicyAccessGranted async {
     return await _channel.invokeMethod('isNotificationPolicyAccessGranted');
   }
 
-  // Takes to DND system settings.
-  // Where the application gains access to change the DND settings.
+  /// Takes to DND system settings.
+  /// Where the application gains access to change the DND settings.
   static void gotoPolicySettings() {
     _channel.invokeMethod('gotoPolicySettings');
   }
 
-  // Set new interruption [filter]
+  /// Set new interruption [filter]
   static Future<bool> setInterruptionFilter(int filter) async {
     return await _channel.invokeMethod('setInterruptionFilter', filter);
   }
 
-  // Returns currently applied notification [filter]
+  /// Returns currently applied notification [filter]
   static Future<int> getCurrentInterruptionFilter() async {
     return await _channel.invokeMethod('getCurrentInterruptionFilter');
   }
 
-  // Returns Filter name from the [filter]
+  /// Returns Filter name from the [filter]
   static String getFilterName(int filter) {
     switch (filter) {
       case 1:
