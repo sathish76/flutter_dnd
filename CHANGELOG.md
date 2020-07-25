@@ -8,4 +8,8 @@
 
 ## 0.1.2
 
-* Add docs for static fileds and methods
+* Add docs for static fields and methods
+
+## 0.1.3
+
+* Fix docs and lint warnings 
