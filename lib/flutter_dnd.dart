@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter/services.dart';
 
 class FlutterDnd {
-
   // Unknown filter
   static const int INTERRUPTION_FILTER_UNKNOWN = 0;
 
@@ -26,7 +25,7 @@ class FlutterDnd {
     return await _channel.invokeMethod('isNotificationPolicyAccessGranted');
   }
 
-  // Takes to DND system settings. 
+  // Takes to DND system settings.
   // Where the application gains access to change the DND settings.
   static void gotoPolicySettings() {
     _channel.invokeMethod('gotoPolicySettings');
