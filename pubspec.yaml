@@ -1,11 +1,11 @@
 name: flutter_dnd
 description: A Flutter plugin to manage Do Not Disturb settings on Android.
-version: 0.1.4
+version: 0.1.4+1
 homepage: https://github.com/sathish76/flutter_dnd
 
 environment:
   sdk: '>=2.12.0 <3.0.0'
-  flutter: ">=1.12.13+hotfix.5 <2.0.0"
+  flutter: ">=1.12.13+hotfix.5"
 
 dependencies:
   flutter:
