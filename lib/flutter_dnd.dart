@@ -21,7 +21,7 @@ class FlutterDnd {
   static const MethodChannel _channel = const MethodChannel('flutter_dnd');
 
   /// Check the application has access to change the DND settings
-  static Future<bool> get isNotificationPolicyAccessGranted async {
+  static Future<bool?> get isNotificationPolicyAccessGranted async {
     return await _channel.invokeMethod('isNotificationPolicyAccessGranted');
   }
 
@@ -32,12 +32,12 @@ class FlutterDnd {
   }
 
   /// Set new interruption [filter]
-  static Future<bool> setInterruptionFilter(int filter) async {
+  static Future<bool?> setInterruptionFilter(int filter) async {
     return await _channel.invokeMethod('setInterruptionFilter', filter);
   }
 
   /// Returns currently applied notification [filter]
-  static Future<int> getCurrentInterruptionFilter() async {
+  static Future<int?> getCurrentInterruptionFilter() async {
     return await _channel.invokeMethod('getCurrentInterruptionFilter');
   }
 
