@@ -11,11 +11,11 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
   String _filterName = '';
-  bool _isNotificationPolicyAccessGranted = false;
+  bool? _isNotificationPolicyAccessGranted = false;
 
   @override
   void initState() {
-    WidgetsBinding.instance.addObserver(this);
+    WidgetsBinding.instance!.addObserver(this);
     super.initState();
   }
 
@@ -35,19 +35,24 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
   }
 
   void updateUI() async {
-    int filter = await FlutterDnd.getCurrentInterruptionFilter();
-    String filterName = FlutterDnd.getFilterName(filter);
-    bool isNotificationPolicyAccessGranted =
-        await FlutterDnd.isNotificationPolicyAccessGranted;
+    int? filter = await FlutterDnd.getCurrentInterruptionFilter();
+    if (filter != null) {
+      String filterName = FlutterDnd.getFilterName(filter);
+      bool? isNotificationPolicyAccessGranted =
+          await FlutterDnd.isNotificationPolicyAccessGranted;
 
-    setState(() {
-      _isNotificationPolicyAccessGranted = isNotificationPolicyAccessGranted;
-      _filterName = filterName;
-    });
+      setState(() {
+        _isNotificationPolicyAccessGranted = isNotificationPolicyAccessGranted;
+        _filterName = filterName;
+      });
+    }
   }
 
   void setInterruptionFilter(int filter) async {
-    if (await FlutterDnd.isNotificationPolicyAccessGranted) {
+    final bool? isNotificationPolicyAccessGranted =
+        await FlutterDnd.isNotificationPolicyAccessGranted;
+    if (isNotificationPolicyAccessGranted != null &&
+        isNotificationPolicyAccessGranted) {
       await FlutterDnd.setInterruptionFilter(filter);
       updateUI();
     }
@@ -68,7 +73,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
               height: 10,
             ),
             Text(
-                'isNotificationPolicyAccessGranted: ${_isNotificationPolicyAccessGranted ? 'YES' : 'NO'}'),
+                'isNotificationPolicyAccessGranted: ${_isNotificationPolicyAccessGranted! ? 'YES' : 'NO'}'),
             SizedBox(
               height: 10,
             ),

@@ -4,7 +4,7 @@ version: 0.1.3
 homepage: https://github.com/sathish76/flutter_dnd
 
 environment:
-  sdk: ">=2.2.0 <3.0.0"
+  sdk: '>=2.12.0 <3.0.0'
   flutter: ">=1.12.13+hotfix.5 <2.0.0"
 
 dependencies:
