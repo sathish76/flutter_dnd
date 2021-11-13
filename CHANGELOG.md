@@ -13,3 +13,7 @@
 ## 0.1.3
 
 * Fix docs and lint warnings 
+
+## 0.1.4
+
+* Migrate package to null safety
