@@ -17,3 +17,7 @@
 ## 0.1.4
 
 * Migrate package to null safety
+
+## 0.1.4+1
+
+* Migrate package to null safety
